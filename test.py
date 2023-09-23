@@ -1,4 +1,5 @@
 import requests
+import matplotlib.pyplot as plt
 
 #Get the Pi Web API URL
 url = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/F1AbEAVYciAZHVU6DzQbJjxTxWwimrOBShT7hGiW-T9RdLVfg_m58A6BxNVULugR7j2EabASVRTTlQyMjU5XFJZQU4gU0FOREJPWFxTT0xBUiBQUk9EVUNUSU9OXEJVUyBCQVJOfEZMT1cgVEFH/recorded"
@@ -29,6 +30,18 @@ response_jsonBusDaily = responsebusDaily.json()
 
 #for dict in response_json['Items']:
  #   print(dict["Value"])
-
+BusDailyTime = []
+BusDailyValue = []
 for dict in response_jsonBusDaily['Items']:
-    print(dict["Timestamp"])
+    #print(dict["Timestamp"])
+    BusDailyTime.append(dict["Timestamp"])
+    BusDailyValue.append(dict["Value"])
+
+XAxis = BusDailyTime
+YAxis = BusDailyValue
+plt.title("")
+plt.xlabel("")
+plt.ylabel("")
+plt.plot(XAxis, YAxis, label = "")
+plt.legend()
+plt.show()

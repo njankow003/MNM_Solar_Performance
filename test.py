@@ -10,16 +10,19 @@ def feetToMeters(feet):
 urlBusFlow = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/F1AbEAVYciAZHVU6DzQbJjxTxWwimrOBShT7hGiW-T9RdLVfg_m58A6BxNVULugR7j2EabASVRTTlQyMjU5XFJZQU4gU0FOREJPWFxTT0xBUiBQUk9EVUNUSU9OXEJVUyBCQVJOfEZMT1cgVEFH/recorded"
 urlBusDaily = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/F1AbEAVYciAZHVU6DzQbJjxTxWwimrOBShT7hGiW-T9RdLVfgFiqSlzYXN1c8B8kKhkXr4ASVRTTlQyMjU5XFJZQU4gU0FOREJPWFxTT0xBUiBQUk9EVUNUSU9OXEJVUyBCQVJOfERBSUxZIFRPVEFM/recorded"
 urlVehDaily = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/F1AbEAVYciAZHVU6DzQbJjxTxWwYTCY6CdT7hGiW-T9RdLVfg_XDEejkXN1c8B8kKhkXr4ASVRTTlQyMjU5XFJZQU4gU0FOREJPWFxTT0xBUiBQUk9EVUNUSU9OXEVMRUNUUklDIFZFSElDTEUgQ0hBUkdJTkd8REFJTFkgVE9UQUw/recorded"
+urlVehFlow = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/F1AbEAVYciAZHVU6DzQbJjxTxWwYTCY6CdT7hGiW-T9RdLVfgFTQq7q9xNVULugR7j2EabASVRTTlQyMjU5XFJZQU4gU0FOREJPWFxTT0xBUiBQUk9EVUNUSU9OXEVMRUNUUklDIFZFSElDTEUgQ0hBUkdJTkd8RkxPVyBUQUc/recorded"
 
 #Make a GET request to the Pi Web API
 responseBusFlow = requests.get(urlBusFlow, auth=('njankowski', 'eje3+ydIjO9?-39'))
 responseBusDaily = requests.get(urlBusDaily, auth=('njankowski', 'eje3+ydIjO9?-39'))
 responseVehDaily = requests.get(urlVehDaily, auth=('njankowski', 'eje3+ydIjO9?-39'))
+responseVehFlow = requests.get(urlBusFlow, auth=('njankowski', 'eje3+ydIjO9?-39'))
 
 #Get the Pi Web API response
 jsonBusFlow = responseBusFlow.json()
 jsonBusDaily = responseBusDaily.json()
 jsonVehDaily = responseBusDaily.json()
+jsonVehFlow = responseBusFlow.json()
 
 # Gets bus daily values and times into an array
 BusDailyTime = []
@@ -44,6 +47,14 @@ for dict in jsonVehDaily['Items']:
     VehDailyTime.append(dict["Timestamp"])
     VehDailyValue.append(dict["Value"])
 
+VehFlowTime = []
+VehFlowValue = []
+for dict in jsonVehFlow['Items']:
+    #print(dict["Timestamp"])
+    VehFlowTime.append(dict["Timestamp"])
+    print(dict["Timestamp"])
+    VehFlowValue.append(dict["Value"])
+"""
 plt.title("")
 plt.xlabel("")
 plt.ylabel("")
@@ -52,3 +63,13 @@ plt.plot(BusDailyTime, BusDailyValue, label = "Bus Daily")
 plt.plot(VehDailyTime, VehDailyValue, label = "Veh Daily")
 plt.legend()
 plt.show()
+"""
+plt.title("")
+plt.xlabel("")
+plt.ylabel("")
+#plt.plot(XAxis, YAxis, label = "")
+plt.plot(BusFlowTime, BusFlowValue, label = "Bus Flow")
+plt.plot(VehFlowTime, VehFlowValue, label = "Veh Flow")
+plt.legend()
+plt.show()
+

@@ -52,11 +52,7 @@ VehFlowValue = []
 for dict3 in jsonVehFlow['Items']:
     #print(dict["Timestamp"])
     VehFlowTime.append(dict3["Timestamp"])
-    #print(dict["Value"])
     VehFlowValue.append(dict3["Value"])
-
-print(VehFlowValue[44])
-print(BusFlowValue[44])
 """
 plt.title("")
 plt.xlabel("")

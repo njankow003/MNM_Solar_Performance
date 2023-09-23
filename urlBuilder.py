@@ -9,6 +9,8 @@ startYear = input("enter start year: ")
 startMonth = input("enter start month: ")
 startDay = input("enter start day: ")
 
+intervalInput = input("enter an interval time followed by s, m, or h: ")
+interval = "&interval= + "+ intervalInput
 #starttime=2011-06-01 00:00:00
 
 startDate = "starttime=" + str(startYear) + "-" + str(startMonth) + "-" + str(startDay) + " 00:00:00" 
@@ -41,14 +43,14 @@ sinceSeptember = "starttime=2023-09-01 00:00:00"
 sinceYesterday = "starttime=2023-09-22 00:00:00"
 startTime = sinceYesterday
 endTime = "&endtime=*" #up to current
-interval = "&interval=1h"
+#interval = "&interval=1h"
 
 maximumSummary = "&summaryType=Maximum"
 averageSummary = "&summaryType=Average"
 summaryType = averageSummary
 #url = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/" + DataType + Interpolated + startTime + endTime + interval + summaryType
 
-url = buildURL("Electric Vehicle Charging", "DailyTotal", startDate,endTime,interval,summaryType)
+url = buildURL("Bus Barn", "DailyTotal", startDate,endTime,interval,summaryType)
 
 #Make a GET request to the Pi Web API
 response = requests.get(url, auth=('njankowski', 'eje3+ydIjO9?-39'))

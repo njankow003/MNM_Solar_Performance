@@ -1,7 +1,7 @@
 import requests
 
 #Get the Pi Web API URL
-url = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/DAILY_TOTAL_STREAM_ID/summary?starttime=2011-06-01 00:00:00&endtime=*&summaryType=Maximum&summaryDuration=1d"
+url = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/F1AbEAVYciAZHVU6DzQbJjxTxWwimrOBShT7hGiW-T9RdLVfg_m58A6BxNVULugR7j2EabASVRTTlQyMjU5XFJZQU4gU0FOREJPWFxTT0xBUiBQUk9EVUNUSU9OXEJVUyBCQVJOfEZMT1cgVEFH/interpolated"
 
 #Make a GET request to the Pi Web API
 response = requests.get(url)

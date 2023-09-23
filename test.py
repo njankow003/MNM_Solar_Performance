@@ -16,13 +16,13 @@ urlVehFlow = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/F1AbEAVYciAZHVU6
 responseBusFlow = requests.get(urlBusFlow, auth=('njankowski', 'eje3+ydIjO9?-39'))
 responseBusDaily = requests.get(urlBusDaily, auth=('njankowski', 'eje3+ydIjO9?-39'))
 responseVehDaily = requests.get(urlVehDaily, auth=('njankowski', 'eje3+ydIjO9?-39'))
-responseVehFlow = requests.get(urlBusFlow, auth=('njankowski', 'eje3+ydIjO9?-39'))
+responseVehFlow = requests.get(urlVehFlow, auth=('njankowski', 'eje3+ydIjO9?-39'))
 
 #Get the Pi Web API response
 jsonBusFlow = responseBusFlow.json()
 jsonBusDaily = responseBusDaily.json()
-jsonVehDaily = responseBusDaily.json()
-jsonVehFlow = responseBusFlow.json()
+jsonVehDaily = responseVehDaily.json()
+jsonVehFlow = responseVehFlow.json()
 
 # Gets bus daily values and times into an array
 BusDailyTime = []
@@ -34,26 +34,29 @@ for dict in jsonBusDaily['Items']:
 
 BusFlowTime = []
 BusFlowValue = []
-for dict in jsonBusFlow['Items']:
+for dict1 in jsonBusFlow['Items']:
     #print(dict["Timestamp"])
-    BusFlowTime.append(dict["Timestamp"])
-    print(dict["Timestamp"])
-    BusFlowValue.append(dict["Value"])
+    BusFlowTime.append(dict1["Timestamp"])
+    #print(dict["Timestamp"])
+    BusFlowValue.append(dict1["Value"])
 
 VehDailyTime = []
 VehDailyValue = []
-for dict in jsonVehDaily['Items']:
+for dict2 in jsonVehDaily['Items']:
     #print(dict["Timestamp"])
-    VehDailyTime.append(dict["Timestamp"])
-    VehDailyValue.append(dict["Value"])
+    VehDailyTime.append(dict2["Timestamp"])
+    VehDailyValue.append(dict2["Value"])
 
 VehFlowTime = []
 VehFlowValue = []
-for dict in jsonVehFlow['Items']:
+for dict3 in jsonVehFlow['Items']:
     #print(dict["Timestamp"])
-    VehFlowTime.append(dict["Timestamp"])
-    print(dict["Timestamp"])
-    VehFlowValue.append(dict["Value"])
+    VehFlowTime.append(dict3["Timestamp"])
+    #print(dict["Value"])
+    VehFlowValue.append(dict3["Value"])
+
+print(VehFlowValue[44])
+print(BusFlowValue[44])
 """
 plt.title("")
 plt.xlabel("")

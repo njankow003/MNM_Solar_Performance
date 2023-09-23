@@ -1,4 +1,7 @@
 import requests
+import matplotlib.pyplot as plt
+
+# I*A*C = E
 
 #Get the Pi Web API URL
 url = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/F1AbEAVYciAZHVU6DzQbJjxTxWwimrOBShT7hGiW-T9RdLVfg_m58A6BxNVULugR7j2EabASVRTTlQyMjU5XFJZQU4gU0FOREJPWFxTT0xBUiBQUk9EVUNUSU9OXEJVUyBCQVJOfEZMT1cgVEFH/recorded"
@@ -19,3 +22,12 @@ response_json = response.json()
 
 #Print the Pi Web API response
 print(response_json)
+
+XAxis = []
+YAxis = []
+plt.title("")
+plt.xlabel("")
+plt.ylabel("")
+plt.plot(XAxis, YAxis, label = "")
+plt.legend()
+plt.show()

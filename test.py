@@ -3,6 +3,12 @@ import matplotlib.pyplot as plt
 
 # I*A*C = E
 
+#EVCA
+#solarArrayArea = feetToMeters(180)
+#CA
+#solarArrayArea = feetToMeters(267.13)
+#conversionEfficiency = energyGenerated / (solarIrradiance * solarArrayArea)
+
 def feetToMeters(feet):
     return feet * 0.09290304
 
@@ -55,20 +61,20 @@ CAMBUSEnergy = []
 plt.title("Conversion Efficiency of EVCA Over Time")
 plt.xlabel("Time")
 plt.ylabel("Conversion Efficiency")
-plt.plot(EVCATime, EVCAEnergy)
+plt.plot(EVCATime, EVCAEnergy, color = "g")
 plt.show()
 
 plt.title("Conversion Efficiency of EVCA Over Time")
 plt.xlabel("Time")
 plt.ylabel("Conversion Efficiency")
-plt.plot(CAMBUSTime, CAMBUSEnergy)
+plt.plot(CAMBUSTime, CAMBUSEnergy, color = "o")
 plt.show()
 
 plt.title("Conversion Efficiency of EVCA and CA Overlapped")
 plt.xlabel("Time")
 plt.ylabel("Conversion Efficiency")
-plt.plot(EVCATime, EVCAEnergy, label = "EVCA")
-plt.plot(CAMBUSTime, CAMBUSEnergy, label = "CA")
+plt.plot(EVCATime, EVCAEnergy, color = "g", label = "EVCA")
+plt.plot(CAMBUSTime, CAMBUSEnergy, color = "o", label = "CA")
 plt.legend()
 plt.show()
 """

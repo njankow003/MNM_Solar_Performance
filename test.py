@@ -1,21 +1,27 @@
 import requests
 import matplotlib.pyplot as plt
 import urlBuilder
+import parameters as p
 
-startTime = "starttime=2023-09-22 00:00:00" #yesterday
-endTime = "&endtime=*" #to current
-interval = "&interval=1h" #1 hour interval
-summaryType = "&summaryType=Maximum" #maximum summary, as opposed to average
+#startTime = "starttime=2023-09-22 00:00:00" #yesterday
+# endTime = "&endtime=*" #to current
+# interval = "&interval=1h" #1 hour interval
+# summaryType = "&summaryType=Maximum" #maximum summary, as opposed to average
+
+# startYear = "2022"
+# startMonth = "9"
+# startDay = "22"
+# startTime = "starttime=" + str(startYear) + "-" + str(startMonth) + "-" + str(startDay) + " 00:00:00" 
 
 def feetToMeters(feet):
     return feet * 0.09290304
 
 
 #Get the Pi Web API URL
-urlBusFlow = urlBuilder.buildURL("Bus Barn", "FlowTag",startTime,endTime,interval,summaryType)
-urlBusDaily = urlBuilder.buildURL("Bus Barn", "DailyTotal",startTime,endTime,interval,summaryType)
-urlVehDaily = urlBuilder.buildURL("Electric Vehicle Charging", "DailyTotal",startTime,endTime,interval,summaryType)
-urlVehFlow = urlBuilder.buildURL("Electric Vehicle Charging", "FlowTag",startTime,endTime,interval,summaryType)
+urlBusFlow = urlBuilder.buildURL("Bus Barn", "FlowTag",p.startTime,p.endTime,p.urlInterval,p.summaryType)
+urlBusDaily = urlBuilder.buildURL("Bus Barn", "DailyTotal",p.startTime,p.endTime,p.urlInterval,p.summaryType)
+urlVehDaily = urlBuilder.buildURL("Electric Vehicle Charging", "DailyTotal",p.startTime,p.endTime,p.urlInterval,p.summaryType)
+urlVehFlow = urlBuilder.buildURL("Electric Vehicle Charging", "FlowTag",p.startTime,p.endTime,p.urlInterval,p.summaryType)
 
 #Make a GET request to the Pi Web API
 responseBusFlow = requests.get(urlBusFlow, auth=('njankowski', 'eje3+ydIjO9?-39'))

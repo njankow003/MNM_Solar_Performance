@@ -7,15 +7,16 @@ endTime = "&endtime=*" #to current
 interval = "&interval=1h" #1 hour interval
 summaryType = "&summaryType=Maximum" #maximum summary, as opposed to average
 
+#square feet to square meters
 def feetToMeters(feet):
     return feet * 0.09290304
 
 
 #Get the Pi Web API URL
-urlBusFlow = urlBuilder.buildURL("Bus Barn", "FlowTag",startTime,endTime,interval,summaryType)
-urlBusDaily = urlBuilder.buildURL("Bus Barn", "DailyTotal",startTime,endTime,interval,summaryType)
-urlVehDaily = urlBuilder.buildURL("Electric Vehicle Charging", "DailyTotal",startTime,endTime,interval,summaryType)
-urlVehFlow = urlBuilder.buildURL("Electric Vehicle Charging", "FlowTag",startTime,endTime,interval,summaryType)
+urlBusFlow = urlBuilder.buildURL("Bus Barn", "FlowTag",p.startTime,p.endTime,p.urlInterval,p.summaryType)
+urlBusDaily = urlBuilder.buildURL("Bus Barn", "DailyTotal",p.startTime,p.endTime,p.urlInterval,p.summaryType)
+urlVehDaily = urlBuilder.buildURL("Electric Vehicle Charging", "DailyTotal",p.startTime,p.endTime,p.urlInterval,p.summaryType)
+urlVehFlow = urlBuilder.buildURL("Electric Vehicle Charging", "FlowTag",p.startTime,p.endTime,p.urlInterval,p.summaryType)
 
 #Make a GET request to the Pi Web API
 responseBusFlow = requests.get(urlBusFlow, auth=('njankowski', 'eje3+ydIjO9?-39'))
@@ -69,12 +70,21 @@ plt.plot(BusDailyTime, BusDailyValue, label = "Bus Daily")
 plt.plot(VehDailyTime, VehDailyValue, label = "Veh Daily")
 plt.legend()
 plt.show()
-"""
+
 plt.title("")
 plt.xlabel("")
 plt.ylabel("")
 #plt.plot(XAxis, YAxis, label = "")
 plt.plot(BusFlowTime, BusFlowValue, label = "Bus Flow")
 plt.plot(VehFlowTime, VehFlowValue, label = "Veh Flow")
+plt.legend()
+plt.show()
+"""
+plt.title("")
+plt.xlabel("")
+plt.ylabel("")
+#plt.plot(XAxis, YAxis, label = "")
+plt.plot(BusFlowTime, BusFlowValue, label = "Bus Flow")
+plt.plot(BusDailyTime, BusDailyValue, label = "Bus Daily")
 plt.legend()
 plt.show()

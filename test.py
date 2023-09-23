@@ -1,11 +1,10 @@
 import requests
 import matplotlib.pyplot as plt
 
-# I*A*C = E
-# C = E / (I*A)
 
 def feetToMeters(feet):
     return feet * 0.09290304
+
 
 #Get the Pi Web API URL
 urlBusFlow = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/F1AbEAVYciAZHVU6DzQbJjxTxWwimrOBShT7hGiW-T9RdLVfg_m58A6BxNVULugR7j2EabASVRTTlQyMjU5XFJZQU4gU0FOREJPWFxTT0xBUiBQUk9EVUNUSU9OXEJVUyBCQVJOfEZMT1cgVEFH/recorded"
@@ -44,6 +43,7 @@ plt.plot(BusDailyTime, BusDailyValue, label = "Bus Daily")
 plt.plot(BusFlowTime, BusFlowValue, label = "Bus Flow")
 plt.legend()
 plt.show()
+
 
 """
 EVCATime = []

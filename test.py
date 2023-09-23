@@ -1,16 +1,21 @@
 import requests
 import matplotlib.pyplot as plt
+import urlBuilder
 
+startTime = "starttime=2023-09-22 00:00:00" #yesterday
+endTime = "&endtime=*" #to current
+interval = "&interval=1h" #1 hour interval
+summaryType = "&summaryType=Maximum" #maximum summary, as opposed to average
 
 def feetToMeters(feet):
     return feet * 0.09290304
 
 
 #Get the Pi Web API URL
-urlBusFlow = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/F1AbEAVYciAZHVU6DzQbJjxTxWwimrOBShT7hGiW-T9RdLVfg_m58A6BxNVULugR7j2EabASVRTTlQyMjU5XFJZQU4gU0FOREJPWFxTT0xBUiBQUk9EVUNUSU9OXEJVUyBCQVJOfEZMT1cgVEFH/recorded"
-urlBusDaily = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/F1AbEAVYciAZHVU6DzQbJjxTxWwimrOBShT7hGiW-T9RdLVfgFiqSlzYXN1c8B8kKhkXr4ASVRTTlQyMjU5XFJZQU4gU0FOREJPWFxTT0xBUiBQUk9EVUNUSU9OXEJVUyBCQVJOfERBSUxZIFRPVEFM/recorded"
-urlVehDaily = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/F1AbEAVYciAZHVU6DzQbJjxTxWwYTCY6CdT7hGiW-T9RdLVfg_XDEejkXN1c8B8kKhkXr4ASVRTTlQyMjU5XFJZQU4gU0FOREJPWFxTT0xBUiBQUk9EVUNUSU9OXEVMRUNUUklDIFZFSElDTEUgQ0hBUkdJTkd8REFJTFkgVE9UQUw/recorded"
-urlVehFlow = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/F1AbEAVYciAZHVU6DzQbJjxTxWwYTCY6CdT7hGiW-T9RdLVfgFTQq7q9xNVULugR7j2EabASVRTTlQyMjU5XFJZQU4gU0FOREJPWFxTT0xBUiBQUk9EVUNUSU9OXEVMRUNUUklDIFZFSElDTEUgQ0hBUkdJTkd8RkxPVyBUQUc/recorded"
+urlBusFlow = urlBuilder.buildURL("Bus Barn", "FlowTag",startTime,endTime,interval,summaryType)
+urlBusDaily = urlBuilder.buildURL("Bus Barn", "DailyTotal",startTime,endTime,interval,summaryType)
+urlVehDaily = urlBuilder.buildURL("Electric Vehicle Charging", "DailyTotal",startTime,endTime,interval,summaryType)
+urlVehFlow = urlBuilder.buildURL("Electric Vehicle Charging", "FlowTag",startTime,endTime,interval,summaryType)
 
 #Make a GET request to the Pi Web API
 responseBusFlow = requests.get(urlBusFlow, auth=('njankowski', 'eje3+ydIjO9?-39'))
@@ -52,7 +57,9 @@ VehFlowValue = []
 for dict3 in jsonVehFlow['Items']:
     #print(dict["Timestamp"])
     VehFlowTime.append(dict3["Timestamp"])
+    #print(dict["Value"])
     VehFlowValue.append(dict3["Value"])
+
 """
 plt.title("")
 plt.xlabel("")
@@ -71,4 +78,3 @@ plt.plot(BusFlowTime, BusFlowValue, label = "Bus Flow")
 plt.plot(VehFlowTime, VehFlowValue, label = "Veh Flow")
 plt.legend()
 plt.show()
-

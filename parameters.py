@@ -8,7 +8,7 @@ interpOrSummary = "Summary"
 #If using Summary, define the type of summary
 if interpOrSummary == "Summary":
     #Define summary type as "Maximum" or "Average"
-    summaryType1 = "Minimum"
+    summaryType1 = "Maximum"
     summaryType2 = "Maximum"
 
 #Define a start date or collect data since installation

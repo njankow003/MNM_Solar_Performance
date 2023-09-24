@@ -1,4 +1,5 @@
 import requests
+import parameters as p
 
 # def checkInput(checkInput):
 #     if checkInput.isdigit():
@@ -9,8 +10,8 @@ import requests
 # startMonth = input("enter start month: ")
 # startDay = input("enter start day: ")
 
-intervalInput = input("enter an interval time followed by s, m, or h: ")
-interval = "&interval="+ intervalInput
+#intervalInput = input("enter an interval time followed by s, m, or h: ")
+#interval = "&interval="+ intervalInput
 #starttime=2011-06-01 00:00:00
 
 #startDate = "starttime=" + str(startYear) + "-" + str(startMonth) + "-" + str(startDay) + " 00:00:00" 
@@ -30,7 +31,7 @@ def buildURL(Location: str,DataType,startTime,endTime,interval,summaryType):
         url = "F1AbEAVYciAZHVU6DzQbJjxTxWwYTCY6CdT7hGiW-T9RdLVfg_XDEejkXN1c8B8kKhkXr4ASVRTTlQyMjU5XFJZQU4gU0FOREJPWFxTT0xBUiBQUk9EVUNUSU9OXEVMRUNUUklDIFZFSElDTEUgQ0hBUkdJTkd8REFJTFkgVE9UQUw"
     if Location == "Electric Vehicle Charging" and DataType == "FlowTag":
         url = "F1AbEAVYciAZHVU6DzQbJjxTxWwYTCY6CdT7hGiW-T9RdLVfgFTQq7q9xNVULugR7j2EabASVRTTlQyMjU5XFJZQU4gU0FOREJPWFxTT0xBUiBQUk9EVUNUSU9OXEVMRUNUUklDIFZFSElDTEUgQ0hBUkdJTkd8RkxPVyBUQUc"
-    FinalUrl = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/" + url + Interpolated + startTime + endTime + interval + summaryType
+    FinalUrl = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/" + url + p.setInterpOrSummary + startTime + summaryType + endTime + interval
     return FinalUrl
 
 #For Bus Barn
@@ -38,6 +39,10 @@ def buildURL(Location: str,DataType,startTime,endTime,interval,summaryType):
 
 Interpolated = "/interpolated?"
 Summary = "/summary?"
+
+#print(buildURL(p.Location1, p.DataType1,p.startTime,p.endTime,p.urlInterval,p.summaryType1))
+
+
 
 sinceInstallation = "starttime=2011-06-01 00:00:00"
 sinceSeptember = "starttime=2023-09-01 00:00:00"
@@ -51,10 +56,10 @@ averageSummary = "&summaryType=Average"
 summaryType = averageSummary
 #url = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/" + DataType + Interpolated + startTime + endTime + interval + summaryType
 
-url = buildURL("Bus Barn", "DailyTotal", startDate,endTime,interval,summaryType)
+#url = buildURL("Bus Barn", "DailyTotal", startDate,endTime,interval,summaryType)
 #print(url)
 #Make a GET request to the Pi Web API
-response = requests.get(url, auth=('njankowski', 'eje3+ydIjO9?-39'))
+#response = requests.get(url, auth=('njankowski', 'eje3+ydIjO9?-39'))
 
 #Check the response status code
 # if response.status_code == 200:
@@ -67,7 +72,7 @@ response = requests.get(url, auth=('njankowski', 'eje3+ydIjO9?-39'))
 
 
 #Get the Pi Web API response
-response_json = response.json()
+#response_json = response.json()
 
 #Print the Pi Web API response
 #print(response_json)
@@ -76,7 +81,7 @@ response_json = response.json()
 #response = requests.get(url, auth=('njankowski', 'eje3+ydIjO9?-39'))
 
 #Get the Pi Web API response
-jsonResponse = response.json()
+#jsonResponse = response.json()
 
 # Gets bus daily values and times into an array
 # BusDailyTime = []

@@ -40,7 +40,7 @@ def buildURL(Location: str,DataType,startTime,endTime,interval,summaryType):
 Interpolated = "/interpolated?"
 Summary = "/summary?"
 
-print(buildURL(p.Location1, p.DataType1,p.startTime,p.endTime,p.urlInterval,p.summaryType1))
+print(buildURL(p.Location1, p.DataType1,p.startTime,p.endTime,p.urlInterval,p.setSummaryType1))
 
 
 

@@ -40,8 +40,8 @@ def getTimesAndVals(json):
                 #Times.append(["Value"]["Timestamp"])
                 #Values.append(["Value"]["Value"])
             #print(dict["Value"])
-        print(Values)
     return (Times, Values)
+
 
 def Plot1(Times, Values, Label):
     return plt.plot(Times, Values, label = str(Label))
@@ -53,23 +53,28 @@ def createLabel(Location,DataType,SummaryType):
     return str(SummaryType) + " " + str(DataType) + " for the " + str(Location) + " location."
 
 
-Vals1 = getTimesAndVals(getResponse(getRequest(urlBuilder.buildURL(p.Location1, p.DataType1,p.startTime,p.endTime,p.urlInterval,p.summaryType1))))[0]
-Times1 = getTimesAndVals(getResponse(getRequest(urlBuilder.buildURL(p.Location1, p.DataType1,p.startTime,p.endTime,p.urlInterval,p.summaryType1))))[1]
-Label1 = createLabel(p.Location1, p.DataType1, p.summaryType1)
+Times1 = getTimesAndVals(getResponse(getRequest(urlBuilder.buildURL(p.Location1, p.DataType1,p.startTime,p.endTime,p.urlInterval,p.setSummaryType1))))[0]
+Vals1 = getTimesAndVals(getResponse(getRequest(urlBuilder.buildURL(p.Location1, p.DataType1,p.startTime,p.endTime,p.urlInterval,p.setSummaryType1))))[1]
+Label1 = createLabel(p.Location1, p.DataType1, p.setSummaryType1)
 
 #print(urlBuilder.buildURL(p.Location1, p.DataType1,p.startTime,p.endTime,p.urlInterval,p.summaryType1))
 
-Vals2 = getTimesAndVals(getResponse(getRequest(urlBuilder.buildURL(p.Location2, p.DataType2,p.startTime,p.endTime,p.urlInterval,p.summaryType2))))[0]
-Times2 = getTimesAndVals(getResponse(getRequest(urlBuilder.buildURL(p.Location2, p.DataType2,p.startTime,p.endTime,p.urlInterval,p.summaryType2))))[1]
-Label2 = createLabel(p.Location2, p.DataType2, p.summaryType2)
+Times2 = getTimesAndVals(getResponse(getRequest(urlBuilder.buildURL(p.Location2, p.DataType2,p.startTime,p.endTime,p.urlInterval,p.setSummaryType2))))[0]
+Vals2 = getTimesAndVals(getResponse(getRequest(urlBuilder.buildURL(p.Location2, p.DataType2,p.startTime,p.endTime,p.urlInterval,p.setSummaryType2))))[1]
+Label2 = createLabel(p.Location2, p.DataType2, p.setSummaryType2)
+
+print((urlBuilder.buildURL(p.Location2, p.DataType2,p.startTime,p.endTime,p.urlInterval,p.setSummaryType2)))
+print(Vals1)
+print(Vals2)
+print(Times2)
 
 # print(urlBuilder.buildURL(p.Location2, p.DataType2,p.startTime,p.endTime,p.urlInterval,p.summaryType2))
 
 plt.title("")
 plt.xlabel("")
 plt.ylabel("")
-Plot1(Vals1,Times1,Label1)
-Plot2(Vals2,Times2,Label2)
+Plot1(Times1,Vals1,Label1)
+Plot2(Times2,Vals2,Label2)
 plt.legend()
 plt.show()
 

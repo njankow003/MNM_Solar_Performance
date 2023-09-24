@@ -3,25 +3,25 @@ intervalAmount = "1"
 intervalUnits = "h"
 
 #Set "Interpolated" or "Summary"
-interpOrSummary = "Summary"
+interpOrSummary = "Interpolated"
 
 #If using Summary, define the type of summary
 if interpOrSummary == "Summary":
     #Define summary type as "Maximum" or "Average"
-    summaryType1 = "Maximum"
-    summaryType2 = "Maximum"
+    summaryType1 = "Total"
+    summaryType2 = "Total"
 
 #Define a start date or collect data since installation
-sinceInstall = False
+sinceInstall = True
 startYear = "2023"
 startMonth = "9"
 startDay = "22"
 
 #Define an end date or collect data until now
-untilCurrent = True
-endYear = ""
-endMonth = ""
-endDay = ""
+untilCurrent = False
+endYear = "2011"
+endMonth = "07"
+endDay = "01"
 
 #Define location as either "Bus Barn" or "Electric Vehicle Charging"
 Location1 = "Bus Barn"
@@ -37,14 +37,14 @@ DataType2 = "FlowTag"
 
 if interpOrSummary == "Interpolated":
     urlInterval = "&interval=" + intervalAmount + intervalUnits
-    summaryType1 = ""
-    summaryType2 = ""
+    setSummaryType1 = ""
+    setSummaryType2 = ""
 if interpOrSummary == "Summary":
     urlInterval = "&summaryDuration=" + intervalAmount + intervalUnits
 
 if interpOrSummary == "Summary":
-    summaryType1 = "&summaryType=" + summaryType1
-    summaryType2 = "&summaryType=" + summaryType2
+    setSummaryType1 = "&summaryType=" + summaryType1
+    setSummaryType2 = "&summaryType=" + summaryType2
     urlInterval = "&summaryDuration=" + intervalAmount + intervalUnits
 
 # if interpOrSummary == "Summary":
@@ -59,7 +59,7 @@ if interpOrSummary == "Summary":
     #  summaryType1 = "&summaryType=Average"
 
 if sinceInstall == True:
-    startTime = "2011-06-01 00:00:00"
+    startTime = "starttime=2011-06-01 00:00:00"
 else:
     startTime = "starttime=" + str(startYear) + "-" + str(startMonth) + "-" + str(startDay) + " 00:00:00"
 

@@ -9,6 +9,9 @@ import matplotlib.pyplot as plt
 #solarArrayArea = feetToMeters(267.13)
 #conversionEfficiency = energyGenerated / (solarIrradiance * solarArrayArea)
 
+#EVCAIrradiance = []
+#CSIrradiance = []
+
 def feetToMeters(feet):
     return feet * 0.09290304
 

@@ -5,7 +5,7 @@ urlInterval = "&interval=" + interval + intervalUnits
 summaryType = "&summaryType=Maximum" #maximum summary, as opposed to average
 
 sinceInstall = False
-startYear = "2022"
+startYear = "2023"
 startMonth = "9"
 startDay = "22"
 if sinceInstall == True:

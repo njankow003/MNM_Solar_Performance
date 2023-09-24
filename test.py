@@ -1,6 +1,7 @@
 import requests
 import matplotlib.pyplot as plt
 import urlBuilder
+import parameters as p
 
 startTime = "starttime=2023-09-22 00:00:00" #yesterday
 endTime = "&endtime=*" #to current
@@ -23,6 +24,8 @@ responseBusFlow = requests.get(urlBusFlow, auth=('njankowski', 'eje3+ydIjO9?-39'
 responseBusDaily = requests.get(urlBusDaily, auth=('njankowski', 'eje3+ydIjO9?-39'))
 responseVehDaily = requests.get(urlVehDaily, auth=('njankowski', 'eje3+ydIjO9?-39'))
 responseVehFlow = requests.get(urlVehFlow, auth=('njankowski', 'eje3+ydIjO9?-39'))
+
+
 
 #Get the Pi Web API response
 jsonBusFlow = responseBusFlow.json()

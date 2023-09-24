@@ -52,7 +52,7 @@ summaryType = averageSummary
 #url = "https://itsnt2259.iowa.uiowa.edu/piwebapi/streams/" + DataType + Interpolated + startTime + endTime + interval + summaryType
 
 url = buildURL("Bus Barn", "DailyTotal", startDate,endTime,interval,summaryType)
-print(url)
+#print(url)
 #Make a GET request to the Pi Web API
 response = requests.get(url, auth=('njankowski', 'eje3+ydIjO9?-39'))
 
@@ -70,7 +70,7 @@ response = requests.get(url, auth=('njankowski', 'eje3+ydIjO9?-39'))
 response_json = response.json()
 
 #Print the Pi Web API response
-print(response_json)
+#print(response_json)
 
 
 #response = requests.get(url, auth=('njankowski', 'eje3+ydIjO9?-39'))
@@ -79,10 +79,10 @@ print(response_json)
 jsonResponse = response.json()
 
 # Gets bus daily values and times into an array
-BusDailyTime = []
-BusDailyValue = []
-for dict in jsonResponse['Items']:
-     print(dict["Timestamp"])
-     print(dict["Value"])
-     BusDailyTime.append(dict["Timestamp"])
-     BusDailyValue.append(dict["Value"])
+# BusDailyTime = []
+# BusDailyValue = []
+# for dict in jsonResponse['Items']:
+#      #print(dict["Timestamp"])
+#      #print(dict["Value"])
+#      BusDailyTime.append(dict["Timestamp"])
+#      BusDailyValue.append(dict["Value"])
